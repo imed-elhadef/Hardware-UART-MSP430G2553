@@ -80,4 +80,12 @@ __interrupt void Port_1(void)
    P1IFG &= ~BIT3;                     // P1.3 IFG cleared
 }
 
+// Timer A0 interrupt service routine
+#pragma vector=TIMER0_A0_VECTOR
+__interrupt void Timer_A (void)
+{
+  BLINK_LED1();                             // Toggle P1.0
+}
+
+
 

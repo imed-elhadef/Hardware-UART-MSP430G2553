@@ -30,6 +30,11 @@ void Hal_init ()
     P1IES |= BIT3;                   // P1.3 Hi/lo edge
     P1IFG &= ~BIT3;                  // P1.3 IFG cleared
 
+   /*Enable Timer A0 */
+    CCTL0 = CCIE;                             // CCR0 interrupt enabled
+    TACTL = TASSEL_2 + MC_1 + ID_3;           // SMCLK/8, upmode  
+    CCR0 =  10000;                           // 12.5 Hz   
+
 
     /* Configure hardware UART */
     BCSCTL1 = CALBC1_1MHZ; // Set DCO to 1MHz
