@@ -17,6 +17,7 @@
 
 static volatile char data;
 
+char door[] = "OPENED";
 char receive[] = "Received command: ";
 char unknown[] = "Config Packet Received";
 char back[]= "\n\r";
@@ -27,6 +28,23 @@ void main(void)
     Hal_init();
     while(1)
     {
+     while (DOOR_IS_LOW()) //The door is close
+        {
+           ACTIV_RELAY1();
+           ACTIV_RELAY2();
+           DACTIV_RELAY3();
+        }
+
+     //The door is open
+     while (!DOOR_IS_LOW())
+          {    
+             ACTIV_RELAY3();
+             DACTIV_RELAY1();
+             DACTIV_RELAY2();
+             //UARTSendArray(door, sizeof(door));
+         
+           }
+     
     }
 }
 
