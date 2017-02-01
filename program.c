@@ -22,6 +22,8 @@ void Hal_init ()
 
 
     P1DIR |= BIT0 + BIT6;            // Set P1.0 and P1.6 pins as output the rest are input
+    P2DIR |= BIT0 + BIT1 + BIT2;     // Set P2.0, P2.1 and P2.2 as output the rest are input --> Relays output
+    P3DIR |= BIT4 + BIT5 + BIT6;     // Set P3.4, P3.5 and P3.6 pins as output the rest are input 
 
     /*Init Interruption*/
     P1REN |= BIT3;                   // Enable internal pull-up/down resistors
